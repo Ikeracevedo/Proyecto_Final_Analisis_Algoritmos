@@ -22,6 +22,7 @@ def construir_grafo(path_csv):
     G = nx.Graph()
     for _, fila in df.iterrows():
         G.add_edge(fila["origen"], fila["destino"], weight=fila["distancia"])
+    return G
 
 def dijkstra(G, origen, destino):
     """
