@@ -19,8 +19,6 @@ def quicksort(lista, key):
     list
         Una nueva lista ordenada ascendentemente según el valor asociado a la clave `key`.
     """
-    #Salida de nombre algoritmo
-    print("Ordenando pedidos por medio del algoritmo de QuickSort")
 
     #Si la lista tiene 0 o 1 elemento devuelve la lista de la misma forma de como ingreso
     if len(lista) <= 1:
@@ -54,8 +52,6 @@ def mergesort(lista, key):
     list
         Una nueva lista ordenada ascendentemente según el valor asociado a la clave `key`.
     """
-    #Salida de nombre algoritmo
-    print("Ordenando pedidos por medio del algoritmo de MergeSort")
     #Si la lista es menor o igual a 1 devuelve la misma lista
     if len(lista) <= 1:
         return lista
@@ -126,6 +122,8 @@ def ordenar_pedidos(path_csv, key="prioridad", metodo="quicksort"):
         DataFrame con los pedidos ordenados según la clave y el método especificado.
 
     """
+    #Salida de nombre algoritmo
+    print(f"Ordenando pedidos por medio del algoritmo de {metodo}")
     #Lee el archivo csv
     df = pd.read_csv(path_csv)
     #Convierte los datos a lista de diccionarios
