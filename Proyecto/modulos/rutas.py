@@ -42,7 +42,7 @@ def dijkstra(G, origen, destino):
     float
         Costo mínimo desde el nodo origen hasta el nodo destino.
     """
-
+    print("Calculando la ruta mas optima por medio del algoritmo de Dijkstra")
     dist = {nodo: float("inf") for nodo in G.nodes}
     dist[origen] = 0
     cola = PriorityQueue()
@@ -78,7 +78,7 @@ def heuristica(a, b, posiciones):
     float
         Distancia euclidiana entre los nodos a y b.
     """
-
+    print("Calculando la ruta mas optima de forma heuristica")
     (x1, y1), (x2, y2) = posiciones[a], posiciones[b]
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
