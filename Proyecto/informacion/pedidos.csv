@@ -1,5 +1,21 @@
 id,destino,prioridad,peso
-1,Bogotá,2,12.5
+1,Bogotá,3,12.4
 2,Medellín,1,8.2
-3,Cali,3,9.5
-4,Barranquilla,2,11.0
+3,Cali,2,17.1
+4,Barranquilla,5,22.6
+5,Pereira,1,4.5
+6,Bucaramanga,2,15.0
+7,Manizales,4,10.7
+8,Sincelejo,3,19.8
+9,Neiva,2,14.4
+10,Cartagena,1,7.9
+11,Popayán,4,13.4
+12,Armenia,1,5.1
+13,Santa Marta,2,11.9
+14,Valledupar,5,23.8
+15,Ipiales,3,18.4
+16,Pasto,5,24.4
+17,Bogotá,2,9.3
+18,Cali,1,7.8
+19,Riohacha,4,16.9
+20,Montería,3,13.7

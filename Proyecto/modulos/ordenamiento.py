@@ -1,7 +1,7 @@
 
 import pandas as pd
 
-#Algori
+#Algoritmo 
 def quicksort(lista, key):
     """
     Ordena una lista utilizando el algoritmo de quicksort,

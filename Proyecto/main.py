@@ -32,15 +32,20 @@ def main():
 # 2. RUTAS
     print("\n Calculando ruta óptima...")
     
-    
-    # Dijkstra
     G, posiciones = construir_grafo("informacion/rutas.csv")
-    (_, t, m) = medir_rendimiento(a_star, G, "A", "E", posiciones)
+    # Elegir dos nodos válidos automáticamente
+    nodos = list(G.nodes())
+    origen = nodos[0]
+    destino = nodos[-1]
+
+    # Dijkstra
+    (_, t, m) = medir_rendimiento(dijkstra, G, origen, destino)
     guardar_resultado("Dijkstra", t, m, "rutas.csv")
 
     # A*
-    (_, t, m) = medir_rendimiento(a_star, G, "A", "E", posiciones)
+    (_, t, m) = medir_rendimiento(a_star, G, origen, destino, posiciones)
     guardar_resultado("A*", t, m, "rutas.csv")
+
 
 # 3. ASIGNACIÓN
 
