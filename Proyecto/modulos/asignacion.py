@@ -18,7 +18,8 @@ def hungaro(path_csv):
         - Lista de asignaciones (vehiculo, ruta) según el orden óptimo.
         - Costo total mínimo de la asignación.
     """
-
+    #Salida de nombre algoritmo
+    print(f"Asignando por medio del algoritmo Hungaro")
     df = pd.read_csv(path_csv)
     matriz = df.pivot(index="vehiculo", columns="ruta", values="costo").to_numpy()
     fila, col = linear_sum_assignment(matriz)
@@ -42,7 +43,8 @@ def greedy(path_csv):
         - Lista de asignaciones (vehiculo, ruta) seleccionadas.
         - Costo total acumulado de las asignaciones.
     """
-
+    #Salida de nombre algoritmo
+    print(f"Asignando por medio del algoritmo Greedy")
     df = pd.read_csv(path_csv)
     df = df.sort_values("costo")
     asignados_veh = set()

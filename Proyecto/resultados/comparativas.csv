@@ -1,0 +1,7 @@
+algoritmo,tiempo_segundos,memoria_bytes,extra
+QuickSort,0.04402950000076089,320413,pedidos.csv
+MergeSort,0.022908499999175547,298532,pedidos.csv
+Dijkstra,0.0020451000000321073,4846,rutas.csv
+A*,0.002646400000230642,4558,rutas.csv
+Hungaro,0.019581799999286886,293083,asignacion.csv
+Greedy,0.005978000001050532,293011,asignacion.csv

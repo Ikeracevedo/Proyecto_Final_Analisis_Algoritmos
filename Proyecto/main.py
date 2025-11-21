@@ -1,25 +1,61 @@
 # main.py
 from modulos.ordenamiento import ordenar_pedidos
-from modulos.rutas import construir_grafo, dijkstra
-from modulos.asignacion import hungaro
+from modulos.rutas import construir_grafo, dijkstra, a_star
+from modulos.asignacion import greedy, hungaro
+from modulos.metricas import medir_rendimiento, guardar_resultado, exportar_csv
+from modulos.graficas import graficar_resultados
+
 
 def main():
     print("=== SISTEMA DE OPTIMIZACIÓN LOGÍSTICA ===")
 
+# 1. ORDENAMIENTO
     print("\n Ordenando pedidos...")
-    pedidos_ordenados = ordenar_pedidos("informacion/pedidos.csv", key="prioridad", metodo="quicksort")
-    print(pedidos_ordenados.head())
+    #Algoritmo QuickSort
+    (_, t, m) = medir_rendimiento(
+        ordenar_pedidos,
+        "informacion/pedidos.csv",
+        key="prioridad",
+        metodo="quicksort"
+    )
+    guardar_resultado("QuickSort", t, m, "pedidos.csv")
 
+    #Algoritmo MergeSort
+    (_, t, m) = medir_rendimiento(
+        ordenar_pedidos,
+        "informacion/pedidos.csv",
+        key="prioridad",
+        metodo="mergesort"
+    )
+    guardar_resultado("MergeSort", t, m, "pedidos.csv")
+
+# 2. RUTAS
     print("\n Calculando ruta óptima...")
     
-    G = construir_grafo("informacion/rutas.csv")
-    distancia = dijkstra(G, "A", "E")
-    print(f"Ruta más corta de A a E: {distancia} km")
+    
+    # Dijkstra
+    G, posiciones = construir_grafo("informacion/rutas.csv")
+    (_, t, m) = medir_rendimiento(a_star, G, "A", "E", posiciones)
+    guardar_resultado("Dijkstra", t, m, "rutas.csv")
 
-    print("\n Asignando recursos (Algoritmo Húngaro)...")
-    asignaciones, costo = hungaro("informacion/asignacion.csv")
-    print(f"Asignaciones: {asignaciones}")
-    print(f"Costo total: {costo}")
+    # A*
+    (_, t, m) = medir_rendimiento(a_star, G, "A", "E", posiciones)
+    guardar_resultado("A*", t, m, "rutas.csv")
+
+# 3. ASIGNACIÓN
+
+    # Húngaro
+    (_, t, m) = medir_rendimiento(hungaro, "informacion/asignacion.csv")
+    guardar_resultado("Hungaro", t, m, "asignacion.csv")
+
+    # Greedy
+    (_, t, m) = medir_rendimiento(greedy, "informacion/asignacion.csv")
+    guardar_resultado("Greedy", t, m, "asignacion.csv")
+
+# 4. EXPORTAR RESULTADOS
+    exportar_csv("resultados/comparativas.csv")
+
+    graficar_resultados("resultados/comparativas.csv")
 
 if __name__ == "__main__":
     main()

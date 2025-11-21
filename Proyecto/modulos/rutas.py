@@ -5,24 +5,23 @@ import math
 from queue import PriorityQueue
 
 def construir_grafo(path_csv):
-    """
-    Construye un grafo no dirigido a partir de un archivo CSV con columnas: 'origen', 'destino' y 'distancia'.
+    import networkx as nx
+    import pandas as pd
 
-    Parámetros:
-    ----------
-    path_csv : str
-        Ruta al archivo CSV que contiene las conexiones entre nodos y sus distancias.
-
-    Retorna:
-    -------
-    networkx.Graph
-        Grafo con nodos conectados por aristas ponderadas (distancia).
-    """
     df = pd.read_csv(path_csv)
     G = nx.Graph()
+
+    posiciones = {}  # ← NUEVO
+
     for _, fila in df.iterrows():
         G.add_edge(fila["origen"], fila["destino"], weight=fila["distancia"])
-    return G
+
+        # Si tienes coordenadas, agrégalas aquí
+        posiciones[fila["origen"]] = (0, 0)
+        posiciones[fila["destino"]] = (0, 0)
+
+    return G, posiciones 
+
 
 def dijkstra(G, origen, destino):
     """
