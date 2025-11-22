@@ -1,0 +1,7 @@
+origen,destino,distancia
+C1,C2,120
+C1,C3,240
+C2,C4,180
+C3,C5,210
+C4,C6,130
+C5,C6,170
