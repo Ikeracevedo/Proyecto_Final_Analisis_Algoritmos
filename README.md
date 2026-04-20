@@ -189,7 +189,7 @@ Los resultados completos (tiempo y memoria) se generan automáticamente y se pue
 
 ## 👨‍💻 Autor
 
-**María Andrea Medina (Iker)**  
+**Iker Acevedo Vargas**  
 Universidad Sergio Arboleda  
 Proyecto final – Análisis de Algoritmos (2025)
 
